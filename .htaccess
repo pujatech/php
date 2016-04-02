@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^/?(.*) https://%{HTTP_HOST}/$1 [R,L]
+
+RewriteRule ^casereports/(.*) /uploads/documents/$1 [L]
+RewriteRule ^casereports(.*) /uploads/documents/$1 [L]
+
+RewriteCond $1 !^(index\.php|o2a\.php|custodian|uploads|css|imager|neon|front_assets|assets|dompdf|changer|font|outer_files|robots\.txt|phpinfo\.php|test\.php|deploy\.php)
+RewriteRule ^(.*)$ index.php?/$1 [L]
+#RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
